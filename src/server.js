@@ -1,5 +1,6 @@
 import express from "express";
 import moviesRoutes from "./routes/moviesRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 import { config } from "dotenv";
 import { connectDB, disconnectDB } from "./config/db.js";
 
@@ -9,6 +10,7 @@ connectDB();
 const app = express();
 const PORT = 5001;
 
+app.use("/auth", authRoutes);
 app.use("/movies", moviesRoutes);
 
 app.listen(PORT, () => {
