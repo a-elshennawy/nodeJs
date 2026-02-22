@@ -10,6 +10,8 @@ connectDB();
 const app = express();
 const PORT = 5001;
 
+app.use(express.json()); //<- to handle json in body
+app.use(express.urlencoded({ extended: true })); //<- to handle urlencoded data in body
 app.use("/auth", authRoutes);
 app.use("/movies", moviesRoutes);
 
